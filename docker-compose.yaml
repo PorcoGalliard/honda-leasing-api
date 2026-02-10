@@ -1,0 +1,42 @@
+services:
+  postgres_db:
+    image: postgres:18-alpine
+    container_name: postgres_honda_leasing_api
+    restart: always
+    environment:
+      POSTGRES_USER: suryana
+      POSTGRES_PASSWORD: suryana321
+      POSTGRES_DB: leasing_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  
+  redis_db:
+    image: redis:8.4-alpine
+    container_name: redis_honda_leasing_api
+    restart: always
+    ports:
+      - "6380:6379"
+    command: redis-server --loglevel warning
+    volumes:
+      - redis_data:/data
+  
+  rabbitmq:
+    image: rabbitmq:4.0-management-alpine
+    container_name: rabbitmq_honda_leasing_api
+    restart: always
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  default:
+    name: honda_leasing_network

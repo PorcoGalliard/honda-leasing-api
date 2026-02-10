@@ -1,0 +1,4 @@
+DROP TABLE IF EXISTS dealer.customers CASCADE;
+DROP TABLE IF EXISTS dealer.motor_types CASCADE;
+DROP TABLE IF EXISTS dealer.motors CASCADE;
+DROP TABLE IF EXISTS dealer.motor_assets CASCADE;
