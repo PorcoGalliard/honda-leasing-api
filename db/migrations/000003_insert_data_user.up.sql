@@ -97,6 +97,7 @@ INSERT INTO account.users (
 ('+6285712345678', 'collection@leasingbdg.id', 'Asep Knalpot Collection - Tagih', NULL, '$argon2id$v=19$m=65536,t=3,p=4$examplehashfor778899', TRUE, CURRENT_TIMESTAMP),
 ('+6289612345678', 'finance@leasingbdg.id', 'Rina Finance - Akunting', NULL, '$argon2id$v=19$m=65536,t=3,p=4$examplehashfor990011', TRUE, CURRENT_TIMESTAMP),
 ('+6281314151617', 'kangdian@gmail.com', 'Kang Dian - Customer', NULL, '$argon2id$v=19$m=65536,t=3,p=4$examplehashfor121212', TRUE, CURRENT_TIMESTAMP),
+('+6281234567890', 'winona@gmail.co.id', 'Winona - Customer', NULL, '$argon2id$v=19$m=65536,t=3,p=4$examplehashfor131313', TRUE, CURRENT_TIMESTAMP),
 ('+621', 'system@gmail.com', 'System', NULL, NULL, TRUE, CURRENT_TIMESTAMP);
 
 -- 5. user_roles <<account>>
@@ -110,7 +111,8 @@ INSERT INTO account.user_roles (user_id, role_id, assigned_by) VALUES
 (5, (SELECT role_id FROM account.roles WHERE role_name = 'COLLECTION'), 2),
 (6, (SELECT role_id FROM account.roles WHERE role_name = 'FINANCE'), 2),
 (7, (SELECT role_id FROM account.roles WHERE role_name = 'CUSTOMER'), 2),
-(8, (SELECT role_id FROM account.roles WHERE role_name = 'SYSTEM'), 1);
+(8, (SELECT role_id FROM account.roles WHERE role_name = 'CUSTOMER'), 2),
+(9, (SELECT role_id FROM account.roles WHERE role_name = 'SYSTEM'), 1);
 
 -- 6. oauth_providers <<account>>
 -- Contoh setup untuk login Google & Apple (ganti client_id/secret dengan milikmu)

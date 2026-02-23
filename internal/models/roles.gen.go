@@ -12,10 +12,10 @@ const TableNameRole = "roles"
 
 // Role mapped from table <roles>
 type Role struct {
-	RoleID      int64      `gorm:"column:role_id;type:bigint;primaryKey;autoIncrement:true" json:"role_id"`
-	RoleName    string     `gorm:"column:role_name;type:character varying(50);not null" json:"role_name"`
-	Description *string    `gorm:"column:description;type:text" json:"description"`
-	CreatedAt   *time.Time `gorm:"column:created_at;type:timestamp with time zone;default:CURRENT_TIMESTAMP" json:"created_at"`
+	RoleID      int64     `gorm:"column:role_id;primaryKey;autoIncrement:true" json:"role_id"`
+	RoleName    string    `gorm:"column:role_name;not null" json:"role_name"`
+	Description string    `gorm:"column:description" json:"description"`
+	CreatedAt   time.Time `gorm:"column:created_at;default:CURRENT_TIMESTAMP" json:"created_at"`
 }
 
 // TableName Role's table name

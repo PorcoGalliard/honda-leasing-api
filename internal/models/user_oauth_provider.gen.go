@@ -12,13 +12,13 @@ const TableNameUserOauthProvider = "user_oauth_provider"
 
 // UserOauthProvider mapped from table <user_oauth_provider>
 type UserOauthProvider struct {
-	UserOauthID  int64      `gorm:"column:user_oauth_id;type:bigint;primaryKey;autoIncrement:true" json:"user_oauth_id"`
-	UserID       int64      `gorm:"column:user_id;type:bigint;not null;index:idx_user_oauth_user,priority:1" json:"user_id"`
-	ProviderID   int64      `gorm:"column:provider_id;type:bigint;not null;index:idx_user_oauth_provider,priority:1" json:"provider_id"`
-	AccessToken  *string    `gorm:"column:access_token;type:text" json:"access_token"`
-	RefreshToken *string    `gorm:"column:refresh_token;type:text" json:"refresh_token"`
-	ExpiresAt    *time.Time `gorm:"column:expires_at;type:timestamp with time zone" json:"expires_at"`
-	CreatedAt    *time.Time `gorm:"column:created_at;type:timestamp with time zone;default:CURRENT_TIMESTAMP" json:"created_at"`
+	UserOauthID  int64     `gorm:"column:user_oauth_id;primaryKey;autoIncrement:true" json:"user_oauth_id"`
+	UserID       int64     `gorm:"column:user_id;not null" json:"user_id"`
+	ProviderID   int64     `gorm:"column:provider_id;not null" json:"provider_id"`
+	AccessToken  string    `gorm:"column:access_token" json:"access_token"`
+	RefreshToken string    `gorm:"column:refresh_token" json:"refresh_token"`
+	ExpiresAt    time.Time `gorm:"column:expires_at" json:"expires_at"`
+	CreatedAt    time.Time `gorm:"column:created_at;default:CURRENT_TIMESTAMP" json:"created_at"`
 }
 
 // TableName UserOauthProvider's table name

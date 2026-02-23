@@ -12,10 +12,10 @@ const TableNamePermission = "permissions"
 
 // Permission mapped from table <permissions>
 type Permission struct {
-	PermissionID   int64      `gorm:"column:permission_id;type:bigint;primaryKey;autoIncrement:true" json:"permission_id"`
-	PermissionType string     `gorm:"column:permission_type;type:character varying(100);not null" json:"permission_type"`
-	Description    *string    `gorm:"column:description;type:text" json:"description"`
-	CreatedAt      *time.Time `gorm:"column:created_at;type:timestamp with time zone;default:CURRENT_TIMESTAMP" json:"created_at"`
+	PermissionID   int64     `gorm:"column:permission_id;primaryKey;autoIncrement:true" json:"permission_id"`
+	PermissionType string    `gorm:"column:permission_type;not null" json:"permission_type"`
+	Description    string    `gorm:"column:description" json:"description"`
+	CreatedAt      time.Time `gorm:"column:created_at;default:CURRENT_TIMESTAMP" json:"created_at"`
 }
 
 // TableName Permission's table name
