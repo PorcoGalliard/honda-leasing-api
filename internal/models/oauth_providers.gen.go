@@ -12,15 +12,15 @@ const TableNameOauthProvider = "oauth_providers"
 
 // OauthProvider mapped from table <oauth_providers>
 type OauthProvider struct {
-	ProviderID   int64      `gorm:"column:provider_id;type:bigint;primaryKey;autoIncrement:true" json:"provider_id"`
-	ProviderName string     `gorm:"column:provider_name;type:character varying(50);not null" json:"provider_name"`
-	ClientID     string     `gorm:"column:client_id;type:character varying(255);not null" json:"client_id"`
-	ClientSecret string     `gorm:"column:client_secret;type:character varying(255);not null" json:"client_secret"`
-	RedirectURI  string     `gorm:"column:redirect_uri;type:character varying(255);not null" json:"redirect_uri"`
-	IssuerURL    *string    `gorm:"column:issuer_url;type:character varying(255)" json:"issuer_url"`
-	Active       *bool      `gorm:"column:active;type:boolean;default:true" json:"active"`
-	CreatedAt    *time.Time `gorm:"column:created_at;type:timestamp with time zone;default:CURRENT_TIMESTAMP" json:"created_at"`
-	UpdatedAt    *time.Time `gorm:"column:updated_at;type:timestamp with time zone;default:CURRENT_TIMESTAMP" json:"updated_at"`
+	ProviderID   int64     `gorm:"column:provider_id;primaryKey;autoIncrement:true" json:"provider_id"`
+	ProviderName string    `gorm:"column:provider_name;not null" json:"provider_name"`
+	ClientID     string    `gorm:"column:client_id;not null" json:"client_id"`
+	ClientSecret string    `gorm:"column:client_secret;not null" json:"client_secret"`
+	RedirectURI  string    `gorm:"column:redirect_uri;not null" json:"redirect_uri"`
+	IssuerURL    string    `gorm:"column:issuer_url" json:"issuer_url"`
+	Active       bool      `gorm:"column:active;default:true" json:"active"`
+	CreatedAt    time.Time `gorm:"column:created_at;default:CURRENT_TIMESTAMP" json:"created_at"`
+	UpdatedAt    time.Time `gorm:"column:updated_at;default:CURRENT_TIMESTAMP" json:"updated_at"`
 }
 
 // TableName OauthProvider's table name
