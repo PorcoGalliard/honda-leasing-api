@@ -33,7 +33,7 @@ func main() {
 
 	// Setup routes
 	router := gin.Default()
-	routes.SetupRoutes(router, db.DB)
+	routes.SetupRoutes(router, db.DB, config)
 
 	addr := config.Server.Address
 	srv := &http.Server{

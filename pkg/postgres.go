@@ -34,6 +34,7 @@ func InitDB(cfg *configs.Config) (*Postgres, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect to database: %v", err)
 	}
+
 	sqlDB, err := db.DB()
 	if err != nil {
 		return nil, fmt.Errorf("failed to get database instance: %v", err)
@@ -46,11 +47,14 @@ func InitDB(cfg *configs.Config) (*Postgres, error) {
 		return nil, fmt.Errorf("failed to ping database: %v", err)
 	}
 
-	if err := db.Exec("SET search_path TO Honda").Error; err != nil {
-		return nil, fmt.Errorf("Failed to set search path: %v ", err)
+	// Set search_path to include all schemas (order matters for name resolution)
+	// This ensures GORM generated queries can find tables without schema prefix
+	if err := db.Exec("SET search_path TO dealer, account, mst, leasing, finance, public").Error; err != nil {
+		return nil, fmt.Errorf("failed to set search path: %v", err)
 	}
 
 	log.Printf("✅ Database connected successfully!")
+	log.Printf("✅ Search path set to: dealer, account, mst, leasing, finance, public")
 	return &Postgres{DB: db}, nil
 }
 
