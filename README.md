@@ -4,17 +4,6 @@
 
 ---
 
-## Daftar Isi
-
-1. [Autentikasi](#1-autentikasi)
-2. [Motor](#2-motor)
-3. [Order](#3-order)
-4. [Staff](#4-staff)
-5. [Status & Transisi](#5-status--transisi)
-6. [Kode Error](#6-kode-error)
-
----
-
 ## 1. Autentikasi
 
 ### `POST /auth/register`
