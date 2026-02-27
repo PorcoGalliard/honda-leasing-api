@@ -49,7 +49,6 @@ func (s *Service) listMotorsFlat(ctx context.Context, req ListMotorsRequest) (*L
 
 	motorItems := make([]MotorItem, len(motors))
 	for i, motor := range motors {
-		motorTypeName, _ := s.repo.GetMotorTypeNameByType(ctx, motor.MotorType)
 
 		images := imagesMap[motor.MotorID]
 		if images == nil {
@@ -60,7 +59,6 @@ func (s *Service) listMotorsFlat(ctx context.Context, req ListMotorsRequest) (*L
 			MotorID:       motor.MotorID,
 			Merk:          motor.Merk,
 			MotorType:     motor.MotorType,
-			MotorTypeName: motorTypeName,
 			Tahun:         motor.Tahun,
 			Warna:         motor.Warna,
 			NomorRangka:   motor.NomorRangka,
@@ -124,8 +122,6 @@ func (s *Service) listMotorsGrouped(ctx context.Context, req ListMotorsRequest) 
 			continue
 		}
 
-		motorTypeName, _ := s.repo.GetMotorTypeNameByType(ctx, motorType)
-
 		motorItems := make([]MotorItem, len(motors))
 		for i, motor := range motors {
 			images := imagesMap[motor.MotorID]
@@ -137,7 +133,6 @@ func (s *Service) listMotorsGrouped(ctx context.Context, req ListMotorsRequest) 
 				MotorID:       motor.MotorID,
 				Merk:          motor.Merk,
 				MotorType:     motor.MotorType,
-				MotorTypeName: motorTypeName,
 				Tahun:         motor.Tahun,
 				Warna:         motor.Warna,
 				NomorRangka:   motor.NomorRangka,
@@ -157,7 +152,6 @@ func (s *Service) listMotorsGrouped(ctx context.Context, req ListMotorsRequest) 
 		count := countsByType[motorType]
 		motorTypeGroups = append(motorTypeGroups, MotorTypeGroup{
 			MotorType:     motorType,
-			MotorTypeName: motorTypeName,
 			MotorCount:    int(count),
 			Motors:        motorItems,
 		})

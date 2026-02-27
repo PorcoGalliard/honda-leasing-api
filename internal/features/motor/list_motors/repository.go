@@ -136,20 +136,6 @@ func (r *Repository) GetMotorTypeName(ctx context.Context, motyID int64) (string
 	return motorType.MotyName, nil
 }
 
-func (r *Repository) GetMotorTypeNameByType(ctx context.Context, motorType string) (string, error) {
-
-	mt := r.query.MotorType
-	motorTypeModel, err := mt.WithContext(ctx).
-		Where(mt.MotyName.Eq(motorType)).
-		First()
-
-	if err != nil {
-		return motorType, nil
-	}
-
-	return motorTypeModel.MotyName, nil
-}
-
 func (r *Repository) CountMotorsByType(ctx context.Context, req ListMotorsRequest) (map[string]int64, error) {
 	type CountResult struct {
 		MotorType string `gorm:"column:motor_type"`

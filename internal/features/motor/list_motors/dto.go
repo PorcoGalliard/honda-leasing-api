@@ -23,7 +23,6 @@ type ListMotorsResponse struct {
 // Grouping motor berdasarkan type
 type MotorTypeGroup struct {
 	MotorType     string      `json:"motor_type"`      // Classic, Sport, Matic, Maxi, Bebek
-	MotorTypeName string      `json:"motor_type_name"` // Nama dari motor_types table
 	MotorCount    int         `json:"motor_count"`     // Jumlah motor dalam type ini
 	Motors        []MotorItem `json:"motors"`
 }
@@ -32,7 +31,6 @@ type MotorItem struct {
 	MotorID       int64    `json:"motor_id"`
 	Merk          string   `json:"merk"`
 	MotorType     string   `json:"motor_type"`
-	MotorTypeName string   `json:"motor_type_name"`
 	Tahun         int16    `json:"tahun"`
 	Warna         string   `json:"warna"`
 	NomorRangka   string   `json:"nomor_rangka"`
